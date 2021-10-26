@@ -9,7 +9,7 @@ void main() {
     late CounterCubit counterCubit;
 
     setUp(() {
-      counterCubit = CounterCubit(internetCubit: InternetCubit(connectivity: Connectivity()));
+      counterCubit = CounterCubit();
 
     });
 
