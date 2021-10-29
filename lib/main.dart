@@ -55,3 +55,39 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/*
+Naming conventions:
+
+1. states
+
+Bloc(or cubit) + action + state_of_the_action
+
+ex: WeatherBloc
+  WeatherFetchSuccess
+  WeatherFetchError
+  WeatherFetchInProgress
+
+ex: UserCubit
+  UserCreateSuccess
+  UserCreateError
+  UserDeleteSuccess
+
+2. events
+
+Bloc(or cubit) + subject + action_in_past_tense
+
+ex: UserBloc
+  UserFetched
+  UserDeleted
+
+
+3. methods
+
+action on what cubit is working on
+
+ex: UserCubit
+  fetch
+  delete
+  modify
+ */
