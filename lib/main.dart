@@ -1,5 +1,6 @@
 import 'package:bloc_demo/logic/cubit/counter/counter_cubit.dart';
 import 'package:bloc_demo/logic/cubit/internet/internet_cubit.dart';
+import 'package:bloc_demo/logic/utility/app_bloc_observer.dart';
 import 'package:bloc_demo/presentation/router/app_router.dart';
 import 'package:bloc_demo/presentation/screens/home_screen.dart';
 import 'package:bloc_demo/presentation/screens/second_screen.dart';
@@ -11,6 +12,7 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() async {
+  Bloc.observer = AppBlocObserver();
 
   WidgetsFlutterBinding.ensureInitialized();
 

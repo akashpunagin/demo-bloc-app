@@ -37,4 +37,9 @@ class InternetCubit extends Cubit<InternetState> {
   void emitInternetConnected(ConnectionType connectionType) => emit(InternetConnected(connectionType: connectionType));
 
   void emitInternetDisconnected() => emit(InternetDisconnected());
+
+  @override
+  String toString() {
+    return 'InternetCubit{connectivity: $connectivity}';
+  }
 }

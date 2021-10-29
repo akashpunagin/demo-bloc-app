@@ -29,6 +29,11 @@ class CounterState extends Equatable {
   factory CounterState.fromJson(String source) {
     return CounterState.fromMap(json.decode(source));
   }
+
+  @override
+  String toString() {
+    return 'CounterState{counter: $counter, wasIncremented: $wasIncremented}';
+  }
 }
 
 // @immutable
