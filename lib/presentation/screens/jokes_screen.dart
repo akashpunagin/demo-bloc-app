@@ -19,7 +19,7 @@ class _JokesScreenState extends State<JokesScreen> {
       onPressed: () {
         context.read<JokesBloc>().add(JokesFetched());
       },
-      child: Text("GET JOKE"),
+      child: const Text("GET JOKE"),
     );
   }
 
@@ -36,7 +36,9 @@ class _JokesScreenState extends State<JokesScreen> {
         listener: (context, state) {
           if (state is JokesFetchLoaded) {
             ScaffoldMessenger.of(context).removeCurrentSnackBar();
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Joke Fetched",), duration: Duration(microseconds: 500),));
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text("Joke Fetched",), duration: Duration(milliseconds: 300),
+            ));
           }
         },
         child: Builder(

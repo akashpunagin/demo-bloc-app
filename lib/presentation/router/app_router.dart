@@ -1,11 +1,9 @@
-import 'package:bloc_demo/logic/cubits/counter/counter_cubit.dart';
 import 'package:bloc_demo/presentation/screens/home_screen.dart';
 import 'package:bloc_demo/presentation/screens/jokes_screen.dart';
 import 'package:bloc_demo/presentation/screens/second_screen.dart';
 import 'package:bloc_demo/presentation/screens/third_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRouter {
 

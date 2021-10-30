@@ -1,7 +1,5 @@
 import 'package:bloc_demo/logic/cubits/counter/counter_cubit.dart';
-import 'package:bloc_demo/logic/cubits/internet/internet_cubit.dart';
 import 'package:bloc_test/bloc_test.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:test/test.dart';
 
 void main() {
