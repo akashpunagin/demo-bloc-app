@@ -32,39 +32,33 @@ class _JokesScreenState extends State<JokesScreen> {
           getFetchJokesButton(context: context),
         ],
       ),
-      body: Builder(
+      body: BlocListener<JokesBloc, JokesState>(
+        listener: (context, state) {
+          if (state is JokesFetchLoaded) {
+            ScaffoldMessenger.of(context).removeCurrentSnackBar();
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Joke Fetched",), duration: Duration(microseconds: 500),));
+          }
+        },
+        child: Builder(
           builder: (context) {
             final InternetState internetState = context.watch<InternetCubit>().state;
+            final JokesState jokesState = context.watch<JokesBloc>().state;
 
             if (internetState is InternetDisconnected) {
               return const Text("Please connect to internet");
+            } else if (jokesState is JokesInitial) {
+              return getFetchJokesButton(context: context);
+            } else if (jokesState is JokesFetchLoading) {
+              return const CircularProgressIndicator();
+            } else if (jokesState is JokesFetchError) {
+              return Text("OOPS! ${jokesState.errorMessage}");
+            } else if (jokesState is JokesFetchLoaded) {
+              return Text("DETAILS: ${jokesState.joke.toJson().toString()}");
+            } else {
+              return const CircularProgressIndicator();
             }
-
-            return BlocConsumer<JokesBloc, JokesState>(
-              bloc: context.read<JokesBloc>(),
-              listener: (context, state) {
-                if (state is JokesFetchLoaded) {
-                  ScaffoldMessenger.of(context).removeCurrentSnackBar(
-                      reason: SnackBarClosedReason.swipe);
-                  ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Joke Fetched"),));
-                }
-              },
-              builder: (context, state) {
-                if (state is JokesInitial) {
-                  return getFetchJokesButton(context: context);
-                } else if (state is JokesFetchLoading) {
-                  return const CircularProgressIndicator();
-                } else if (state is JokesFetchError) {
-                  return Text("OOPS! ${state.errorMessage}");
-                } else if (state is JokesFetchLoaded) {
-                  return Text("DETAILS: ${state.joke.toJson().toString()}");
-                } else {
-                  return const CircularProgressIndicator();
-                }
-              },
-            );
           }
+        ),
       ),
     );
   }
