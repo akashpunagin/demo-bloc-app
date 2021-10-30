@@ -1,5 +1,6 @@
-import 'package:bloc_demo/logic/cubit/counter/counter_cubit.dart';
+import 'package:bloc_demo/logic/cubits/counter/counter_cubit.dart';
 import 'package:bloc_demo/presentation/screens/home_screen.dart';
+import 'package:bloc_demo/presentation/screens/jokes_screen.dart';
 import 'package:bloc_demo/presentation/screens/second_screen.dart';
 import 'package:bloc_demo/presentation/screens/third_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,6 +26,8 @@ class AppRouter {
           title: 'Third Screen',
           color: Colors.black,
         ));
+      case "/jokes":
+        return MaterialPageRoute(builder: (context) => const JokesScreen());
       default:
         return null;
     }

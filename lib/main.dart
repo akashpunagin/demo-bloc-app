@@ -1,5 +1,7 @@
-import 'package:bloc_demo/logic/cubit/counter/counter_cubit.dart';
-import 'package:bloc_demo/logic/cubit/internet/internet_cubit.dart';
+import 'package:bloc_demo/data/repositories/jokes/jokes.dart';
+import 'package:bloc_demo/logic/blocs/jokes/jokes_bloc.dart';
+import 'package:bloc_demo/logic/cubits/counter/counter_cubit.dart';
+import 'package:bloc_demo/logic/cubits/internet/internet_cubit.dart';
 import 'package:bloc_demo/logic/utility/app_bloc_observer.dart';
 import 'package:bloc_demo/presentation/router/app_router.dart';
 import 'package:bloc_demo/presentation/screens/home_screen.dart';
@@ -44,6 +46,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<CounterCubit>(
           create: (context) => CounterCubit(),
         ),
+        BlocProvider<JokesBloc>(
+          create: (context) => JokesBloc(jokesRepository: JokesRepositoryImpl()),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -55,6 +60,13 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+/*
+Data Layer
+1. models: create models
+2. data providers: call http functions here
+3. repositories: get raw weather data and convert into models
+ */
 
 /*
 Naming conventions:

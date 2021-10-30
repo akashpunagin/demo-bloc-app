@@ -1,6 +1,6 @@
 import 'package:bloc_demo/constants/enums.dart';
-import 'package:bloc_demo/logic/cubit/counter/counter_cubit.dart';
-import 'package:bloc_demo/logic/cubit/internet/internet_cubit.dart';
+import 'package:bloc_demo/logic/cubits/counter/counter_cubit.dart';
+import 'package:bloc_demo/logic/cubits/internet/internet_cubit.dart';
 import 'package:bloc_demo/presentation/screens/second_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -143,6 +143,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.of(context).pushNamed("/third");
                 },
                 child: const Text("GO TO THIRD SCREEN", style: TextStyle(color: Colors.white),),
+              ),
+              const SizedBox(height: 20,),
+              MaterialButton(
+                color: widget.color,
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/jokes");
+                },
+                child: const Text("GO TO JOKES", style: TextStyle(color: Colors.white),),
               ),
             ],
           ),
